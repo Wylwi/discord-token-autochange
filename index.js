@@ -1,6 +1,6 @@
 module.exports = function(ownerToken, id, debug = false){
     try{
-    if(token === null || id === null){
+    if(ownerToken === null || id === null){
         console.error("Missing parameters")
         return
     }
@@ -8,7 +8,7 @@ const request = require('request');
 request.get({
     url: 'https://discordapp.com/api/oauth2/applications/' + id + '/bot/reset',
     headers: {
-      'Authorization': token
+      'Authorization': ownerToken
     }
   }).on('response', function(response) {
     if(debug) console.log(response.bot.token)
