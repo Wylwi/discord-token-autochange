@@ -15,13 +15,10 @@ npm --install --save discord-token-autochange
 var changeToken = require("discord-token-autochange")
 var token = changeToken(ownerToken, botID)
 ```
-<aside class="panel panel-warning">
 ownerToken est le token discord du propriétaire du bot
 botID est l'identifiant du bot
-</aside>
-<aside class="warning">
-Ces deux paramètres sont obligatoires
-</aside>
+**
+Ces deux paramètres sont obligatoires**
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
