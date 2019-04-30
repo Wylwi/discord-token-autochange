@@ -1,4 +1,4 @@
-module.exports = function(token, id, debug = false){
+module.exports = function(ownerToken, id, debug = false){
     try{
     if(token === null || id === null){
         console.error("Missing parameters")
