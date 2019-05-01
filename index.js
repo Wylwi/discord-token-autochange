@@ -1,26 +1,14 @@
 module.exports = function(ownerToken, id, debug = false){
-    try{
+  try{
     if(ownerToken === null || id === null){
         console.error("Missing parameters")
         return
     }
-const request = require('request');
-request.get({
-    url: 'https://discordapp.com/api/oauth2/applications/' + id + '/bot/reset',
-    headers: {
-      'Authorization': ownerToken
-    }
-  }).on('response', function(response) {
-    if(debug) console.log(response.bot.token)
-    if(response.statusCode !== 200){
-        console.error(response.message)
-        return
-    }
-    token = response.bot.token
-  })
-  return token
+const request = require('sync-request');
+var res = request('POST', 'https://discordapp.com/api/oauth2/applications/' + id + '/bot/reset', {headers: {'Authorization': ownerToken}});
+var body = JSON.parse(res.getBody().toString())
+  return body.token
 } catch(err){
-    console.error(err)
+  console.log("Le serveur a répondu : " + err.statusCode)
 }
 }
-
